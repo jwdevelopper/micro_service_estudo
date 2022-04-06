@@ -1,6 +1,8 @@
 package com.foxestudo.crud.entity;
 
+import com.foxestudo.crud.data.vo.ProdutoVO;
 import lombok.*;
+import org.modelmapper.ModelMapper;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -23,4 +25,8 @@ public class Produto implements Serializable {
     @Column
     private Integer estoque;
     private Double preco;
+
+    public static Produto create(ProdutoVO produtoVO){
+        return new ModelMapper().map(produtoVO,Produto.class);
+    }
 }
